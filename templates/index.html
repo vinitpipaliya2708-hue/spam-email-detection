@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Spam Email Detection</title>
+    <style>
+        /* Reset and basic styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #007bff, #6610f2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background-color: #fff;
+            width: 400px;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            color: #333;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 14px;
+            resize: none;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        textarea:focus {
+            border-color: #6610f2;
+            box-shadow: 0 0 10px rgba(102,16,242,0.3);
+        }
+
+        button {
+            background: linear-gradient(135deg, #6610f2, #007bff);
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            font-size: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #007bff, #6610f2);
+            transform: scale(1.05);
+        }
+
+        .result {
+            margin-top: 25px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #222;
+            background: #f0f0f0;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 AI Spam Email Detector</h1>
+        <p>Enter an email message below and let the AI decide if it's spam or not.</p>
+        
+        <form action="/predict" method="post">
+            <textarea name="message" placeholder="Type your email content here..."></textarea>
+            <br>
+            <button type="submit">🔍 Analyze</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            🧾 Result: {{ prediction }}
+        </div>
+        {% endif %}
+
+        <footer>Powered by Flask & NLP • Spam Detection Project</footer>
+    </div>
+</body>
+</html>
